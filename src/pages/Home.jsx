@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function Home() {
-  const SERVER_URL = 'http://192.168.153.13:5000';
+  const SERVER_URL = 'http://127.0.0.1:5000/';
   const [csvUrl, setCsvUrl] = useState(null);
   const [fileSize, setFileSize] = useState(null);
   const [loadingForum, setLoadingForum] = useState(null);

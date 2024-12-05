@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function ServerDetector() {
-  const SERVER_URL = 'http://192.168.252.13:5000/server_leak'; 
+  const SERVER_URL = 'http://127.0.0.1:5000/server_leak'; 
   const [targetUrl, setTargetUrl] = useState('');
   const [responseData, setResponseData] = useState(null);
   const [error, setError] = useState(null);
