@@ -11,7 +11,7 @@ export default function ServerDetector() {
     event.preventDefault();
     setError(null);
     setLoading(true);
-    setResponseData(null);
+    setResponseData(null); 
 
     try {
       const response = await fetch(SERVER_URL, {
@@ -25,8 +25,8 @@ export default function ServerDetector() {
       }
 
       const data = await response.json();
-      console.log(data);
-      setResponseData(data);
+      console.log(data); // For debugging
+      setResponseData(data); // Save response data
     } catch (err) {
       setError('Failed to fetch results. Please try again.');
       console.error(err);
@@ -59,14 +59,26 @@ export default function ServerDetector() {
       </form>
 
       {responseData && (
-        <div className="mt-8 text-center">
-          <h2 className="text-2xl font-semibold mb-4">Results</h2>
-          <p className="mb-2">
-            <strong>Status:</strong> {responseData.status}
-          </p>
-          <p className="mb-2">
-            <strong>Results:</strong> {responseData.results}
-          </p>
+        <div className="mt-8 p-6 rounded-lg bg-gray-900 shadow-lg w-full max-w-lg">
+          <h2 className="text-xl font-bold mb-4 text-blue-400">Scan Results</h2>
+          <div className="space-y-3">
+            <p>
+              <strong>Status:</strong> {responseData.status}
+            </p>
+            <p>
+              <strong>Endpoint:</strong> {responseData.results.endpoint}
+            </p>
+            <p>
+              <strong>Message:</strong> {responseData.results.message}
+            </p>
+            <p>
+              <strong>Leak Detected:</strong>{' '}
+              {responseData.results.leak_detected ? 'Yes' : 'No'}
+            </p>
+            <p>
+              <strong>Status Code:</strong> {responseData.results.status_code}
+            </p>
+          </div>
         </div>
       )}
 
